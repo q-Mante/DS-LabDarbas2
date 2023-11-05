@@ -2,7 +2,6 @@ package edu.ktu.ds.lab2.demo;
 
 import edu.ktu.ds.lab2.utils.AvlSet;
 import edu.ktu.ds.lab2.utils.BstSet;
-import edu.ktu.ds.lab2.utils.BstSetIterative;
 import edu.ktu.ds.lab2.utils.SortedSet;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.BenchmarkParams;
@@ -24,7 +23,8 @@ public class Benchmark {
     public static class FullSet {
 
         Car[] cars;
-        BstSet<Car> carSet;
+        BstSet<Car> carSetBst;
+        AvlSet<Car> carSetAvl;
 
         @Setup(Level.Iteration)
         public void generateElements(BenchmarkParams params) {
@@ -33,8 +33,10 @@ public class Benchmark {
 
         @Setup(Level.Invocation)
         public void fillCarSet(BenchmarkParams params) {
-            carSet = new BstSet<>();
-            addElements(cars, carSet);
+            carSetBst = new BstSet<>();
+            carSetAvl = new AvlSet<>();
+            addElements(cars, carSetBst);
+            addElements(cars, carSetAvl);
         }
     }
 
@@ -53,39 +55,19 @@ public class Benchmark {
     }
 
     @org.openjdk.jmh.annotations.Benchmark
-    public BstSet<Car> addBstRecursive() {
-        BstSet<Car> carSet = new BstSet<>(Car.byPrice);
-        addElements(cars, carSet);
-        return carSet;
-    }
-
-    @org.openjdk.jmh.annotations.Benchmark
-    public BstSetIterative<Car> addBstIterative() {
-        BstSetIterative<Car> carSet = new BstSetIterative<>(Car.byPrice);
-        addElements(cars, carSet);
-        return carSet;
-    }
-
-    @org.openjdk.jmh.annotations.Benchmark
-    public AvlSet<Car> addAvlRecursive() {
-        AvlSet<Car> carSet = new AvlSet<>(Car.byPrice);
-        addElements(cars, carSet);
-        return carSet;
-    }
-
-    @org.openjdk.jmh.annotations.Benchmark
     public void removeBst(FullSet carSet) {
         for (Car car : carSet.cars) {
-            carSet.carSet.remove(car);
+            carSet.carSetBst.remove(car);
         }
     }
 
     @org.openjdk.jmh.annotations.Benchmark
-    public void sizeBst(FullSet carSet) {
+    public void removeAvl(FullSet carSet) {
         for (Car car : carSet.cars) {
-            carSet.carSet.size();
+            carSet.carSetAvl.remove(car);
         }
     }
+
     public static void addElements(Car[] carArray, SortedSet<Car> carSet) {
         for (Car car : carArray) {
             carSet.add(car);

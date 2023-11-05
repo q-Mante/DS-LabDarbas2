@@ -5,9 +5,6 @@ dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
 inline,edu/ktu/ds/lab2/demo/Benchmark$FullSet.fillCarSet
 inline,edu/ktu/ds/lab2/demo/Benchmark$FullSet.generateElements
-inline,edu/ktu/ds/lab2/demo/Benchmark.addAvlRecursive
-inline,edu/ktu/ds/lab2/demo/Benchmark.addBstIterative
-inline,edu/ktu/ds/lab2/demo/Benchmark.addBstRecursive
 inline,edu/ktu/ds/lab2/demo/Benchmark.generateElements
+inline,edu/ktu/ds/lab2/demo/Benchmark.removeAvl
 inline,edu/ktu/ds/lab2/demo/Benchmark.removeBst
-inline,edu/ktu/ds/lab2/demo/Benchmark.sizeBst

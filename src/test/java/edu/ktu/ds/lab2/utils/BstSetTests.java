@@ -60,6 +60,22 @@ public class BstSetTests {
     }
 
     @Test
+    public void RemoveTest() {
+        Assert.assertEquals(7, root.size());
+        root.remove(15);
+        root.remove(7);
+        root.remove(10);
+        root.remove(17);
+        root.remove(756);
+        Assert.assertFalse(root.contains(15));
+        Assert.assertTrue(root.contains(12));
+        Assert.assertTrue(root.contains(2));
+        Assert.assertTrue(root.contains(5));
+        Assert.assertFalse(root.contains(17));
+        Assert.assertEquals(3, root.size());
+    }
+
+    @Test
     public void HeadSetTest() {
         Set<Integer> headset = root.headSet(12);
         Assert.assertEquals(4, headset.size());

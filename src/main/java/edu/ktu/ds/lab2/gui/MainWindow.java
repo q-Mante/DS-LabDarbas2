@@ -272,9 +272,8 @@ public class MainWindow extends JFrame implements ActionListener {
         } else if (source.equals(panButtons.getButtons().get(4))) {
             treeRemoveAllOneByOne();
         } else if (source.equals(panButtons.getButtons().get(5))) {
-            KsGui.setFormatStartOfLine(true);
-            KsGui.ounerr(taOutput, MESSAGES.getString("notImplemented"));
-            KsGui.setFormatStartOfLine(false);
+            treeRemoveIterationAsc();
+            //treeRemoveIterationDesc();
         }
     }
 
@@ -368,6 +367,38 @@ public class MainWindow extends JFrame implements ActionListener {
         } else {
             KsGui.oun(taOutput, carsSet, MESSAGES.getString("setIterator"));
         }
+        KsGui.setFormatStartOfLine(false);
+    }
+
+    private void treeRemoveIterationAsc() {
+        KsGui.setFormatStartOfLine(true);
+        if (carsSet.isEmpty()) {
+            KsGui.ounerr(taOutput, MESSAGES.getString("setIsEmpty"));
+        } else {
+            Iterator<Car> it = carsSet.iterator();
+            while(it.hasNext()) {
+                Car car = it.next();
+                KsGui.oun(taOutput, car, MESSAGES.getString("setRemoval"));
+                it.remove();
+            }
+        }
+        KsGui.oun(taOutput, carsSet.toVisualizedString(tfDelimiter.getText()));
+        KsGui.setFormatStartOfLine(false);
+    }
+
+    private void treeRemoveIterationDesc() {
+        KsGui.setFormatStartOfLine(true);
+        if (carsSet.isEmpty()) {
+            KsGui.ounerr(taOutput, MESSAGES.getString("setIsEmpty"));
+        } else {
+            Iterator<Car> itd = carsSet.descendingIterator();
+            while(itd.hasNext()) {
+                Car car = itd.next();
+                KsGui.oun(taOutput, car, MESSAGES.getString("setRemoval"));
+                itd.remove();
+            }
+        }
+        KsGui.oun(taOutput, carsSet.toVisualizedString(tfDelimiter.getText()));
         KsGui.setFormatStartOfLine(false);
     }
 
