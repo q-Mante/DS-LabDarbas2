@@ -1,0 +1,37 @@
+
+h
+java:S1192Ë"KDefine a constant instead of duplicating this literal "setIsEmpty" 5 times.(–å£8‡ü…º1
+n
+java:S1192è"KDefine a constant instead of duplicating this literal "setRemoval" 3 times.(˜•Ğûÿÿÿÿ8î¥…†º1
+Q
+java:S1121£".Extract the assignment out of this expression.(–Ÿ›úÿÿÿÿ8‚‡ü…º1
+L
+java:S1121¦".Extract the assignment out of this expression.(Ö—¯¿8‚‡ü…º1
+J
+java:S1659A"(Declare "panButtons" on a separate line.(”—Åöÿÿÿÿÿ8‡ü…º1
+k
+java:S1659F"IDeclare "sizeOfGenSet" and all following declarations on a separate line.(’ôèùÿÿÿÿ8‡ü…º1
+L
+java:S1948D"/Make "carsGenerator" transient or serializable.(ìâÅ¿8†ôÿ…º1
+S
+java:S1611e"1Remove the parentheses around the "btn" parameter(ÙŠÑ¾şÿÿÿÿ8®‡ü…º1
+d
+java:S3252’"AUse static access with "javax.swing.SwingConstants" for "CENTER".(·Õ¼àúÿÿÿÿ8µ‡ü…º1
+M	java:S106¼"+Replace this use of System.out by a logger.(Åî’¤ùÿÿÿÿ8¼‡ü…º1
+r
+java:S1215è"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Å‡ü…º1
+r
+java:S1215é"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Æ‡ü…º1
+r
+java:S1215ê"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Æ‡ü…º1
+M	java:S106ƒ"+Replace this use of System.out by a logger.(Åî’¤ùÿÿÿÿ8É‡ü…º1
+X	java:S125”"<This block of commented-out lines of code should be removed.(½‡ég8 ·‹†º1
+A
+java:S2119ã"Save and re-use this "Random".(Õ„ÜÈùÿÿÿÿ8Ù‡ü…º1
+T
+java:S2696¯"6Make the enclosing method "static" or remove this set.( °³ˆ8â‡ü…º1
+Y
+java:S2696²"6Make the enclosing method "static" or remove this set.(¤Íßşÿÿÿÿ8ã‡ü…º1
+^	java:S125Ä"<This block of commented-out lines of code should be removed.(áğÀñûÿÿÿÿ8ç‡ü…º1
+Z
+java:S1144…"<Remove this unused private "treeRemoveIterationDesc" method.(™ÿÄ¿8Ü·‹†º1

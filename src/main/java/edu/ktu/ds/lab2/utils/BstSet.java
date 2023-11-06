@@ -211,16 +211,24 @@ public class BstSet<E extends Comparable<E>> implements SortedSet<E>, Cloneable 
         } else if (compareResult > 0) {                         // In right children
             node.right = removeRecursive(element, node.right);
         } else {                                                // Current
-            if (node.left == null) {                            //Node with only a right child or no children
-                size--;
-                return node.right;
-            } else if (node.right == null) {                    //Node with only a left child
-                size--;
-                return node.left;
-            } else {                                            //Node with two children
+//            if (node.left == null) {                            //Node with only a right child or no children
+//                size--;
+//                return node.right;
+//            } else if (node.right == null) {                    //Node with only a left child
+//                size--;
+//                return node.left;
+//            } else {                                            //Node with two children
+//                E minValue = getMin(node.right).element;
+//                node.element = minValue;
+//                node.right = removeRecursive(minValue, node.right);
+//            }
+            if (node.left != null && node.right != null) {
                 E minValue = getMin(node.right).element;
                 node.element = minValue;
                 node.right = removeRecursive(minValue, node.right);
+            } else {
+                size--;
+                return node.left != null ? node.left : node.right;
             }
         }
 

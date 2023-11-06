@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 public class BstSetTests {
 
     private BstSet<Integer> root;
@@ -35,6 +37,25 @@ public class BstSetTests {
         Assert.assertTrue(set1.containsAll(set2));
         set2.add(20);
         Assert.assertFalse(set1.containsAll(set2));
+    }
+
+    @Test
+    public void AddAllTest() {
+        BstSet<Integer> set1 = new BstSet<Integer>();
+        BstSet<Integer> set2 = new BstSet<Integer>();
+
+        set1.add(10);
+        set1.add(5);
+        set1.add(15);
+
+        set2.add(10);
+
+        set2.addAll(set1);
+
+        Assert.assertEquals(3, set2.size());
+        Assert.assertTrue(set2.contains(10));
+        Assert.assertTrue(set2.contains(5));
+        Assert.assertTrue(set2.contains(15));
     }
 
     @Test
@@ -105,5 +126,20 @@ public class BstSetTests {
         Assert.assertTrue(subset.contains(10));
         Assert.assertTrue(subset.contains(12));
         Assert.assertFalse(subset.contains(15));
+    }
+
+    @Test
+    public void iteratorRemoveTest() {
+        Iterator<Integer> iterator = root.iterator();
+
+        while (iterator.hasNext()) {
+            Integer element = iterator.next();
+            if (element == 15) {
+                iterator.remove();
+            }
+        }
+        Assert.assertEquals(6, root.size());
+
+        Assert.assertFalse(root.contains(15));
     }
 }
