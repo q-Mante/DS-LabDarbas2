@@ -27,8 +27,6 @@ public class Benchmark {
         BstSet<Car> carSetBst;
         AvlSet<Car> carSetAvl;
 
-        int index;
-
         @Setup(Level.Iteration)
         public void generateElements(BenchmarkParams params) {
             cars = Benchmark.generateElements(Integer.parseInt(params.getParam("elementCount")));
@@ -40,20 +38,20 @@ public class Benchmark {
             carSetAvl = new AvlSet<>();
             addElements(cars, carSetBst);
             addElements(cars, carSetAvl);
-
-            Random rnd = new Random();
-            index = rnd.nextInt(cars.length);
         }
     }
 
-    @Param({"10000", "20000", "40000", "80000", "160000", "320000", "640000", "1280000"})
+    @Param({"10000", "20000", "40000", "80000", "160000"})
     public int elementCount;
 
     Car[] cars;
 
+    Car nonCar;
+
     @Setup(Level.Iteration)
     public void generateElements() {
         cars = generateElements(elementCount);
+        nonCar = new Car("a","a",2000,2000, 2000);
     }
 
     static Car[] generateElements(int count) {
@@ -62,19 +60,14 @@ public class Benchmark {
 
     @org.openjdk.jmh.annotations.Benchmark
     public void removeBst(FullSet carSet) {
-//        for (Car car : carSet.cars) {
-//            carSet.carSetBst.remove(car);
-//        }
-        carSet.carSetBst.remove(carSet.cars[carSet.index]);
-
+        carSet.carSetBst.remove(nonCar);
+        //carSet.carSetBst.remove(carSet.cars[8500]);
     }
 
     @org.openjdk.jmh.annotations.Benchmark
     public void removeAvl(FullSet carSet) {
-//        for (Car car : carSet.cars) {
-//            carSet.carSetAvl.remove(car);
-//        }
-        carSet.carSetAvl.remove(carSet.cars[carSet.index]);
+        carSet.carSetAvl.remove(nonCar);
+        //carSet.carSetAvl.remove(carSet.cars[8500]);
     }
 
     public static void addElements(Car[] carArray, SortedSet<Car> carSet) {
