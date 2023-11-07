@@ -35,6 +35,17 @@ public class Task2 {
         bstSet.add(3);
         bstSet.add(1);
 
+        ArrayList<Integer> elements1 = (ArrayList<Integer>) bstSet.insideElementsOfFullTree();
+        System.out.println(elements1);
+
+        bstSet.remove(17);
+        bstSet.remove(15);
+        bstSet.remove(13);
+        bstSet.remove(11);
+        bstSet.remove(7);
+        bstSet.remove(5);
+        bstSet.remove(3);
+        bstSet.remove(1);
         ArrayList<Integer> elements2 = (ArrayList<Integer>) bstSet.insideElementsOfFullTree();
         System.out.println(elements2);
     }

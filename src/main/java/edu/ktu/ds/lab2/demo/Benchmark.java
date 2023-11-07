@@ -60,14 +60,14 @@ public class Benchmark {
 
     @org.openjdk.jmh.annotations.Benchmark
     public void removeBst(FullSet carSet) {
-        carSet.carSetBst.remove(nonCar);
-        //carSet.carSetBst.remove(carSet.cars[8500]);
+        //carSet.carSetBst.remove(nonCar);
+        carSet.carSetBst.remove(carSet.cars[8500]);
     }
 
     @org.openjdk.jmh.annotations.Benchmark
     public void removeAvl(FullSet carSet) {
-        carSet.carSetAvl.remove(nonCar);
-        //carSet.carSetAvl.remove(carSet.cars[8500]);
+        //carSet.carSetAvl.remove(nonCar);
+        carSet.carSetAvl.remove(carSet.cars[8500]);
     }
 
     public static void addElements(Car[] carArray, SortedSet<Car> carSet) {
