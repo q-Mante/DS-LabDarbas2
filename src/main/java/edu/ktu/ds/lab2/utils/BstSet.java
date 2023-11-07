@@ -515,6 +515,32 @@ public class BstSet<E extends Comparable<E>> implements SortedSet<E>, Cloneable 
         return resultSet;
     }
 
+    public boolean isBalanced(int k) {
+        return isBalanced(k, root);
+    }
+
+    private boolean isBalanced(int k, BstNode<E> node) {
+        if (node == null) {
+            return true;
+        }
+
+        int lHeight = height(node.left);
+        int rHeight = height(node.right);
+
+        return Math.abs(lHeight - rHeight) <= k && isBalanced(k, node.left) && isBalanced(k, node.right);
+    }
+
+    private int height(BstNode<E> node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int lHeight = height(node.left);
+        int rHeight = height(node.right);
+
+        return 1 + Math.max(lHeight, rHeight);
+    }
+
     public List<E> insideElementsOfFullTree() {
         ArrayList<E> elements = new ArrayList<>();
 
