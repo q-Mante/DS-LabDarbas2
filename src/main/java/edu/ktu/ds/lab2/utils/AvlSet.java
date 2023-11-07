@@ -85,107 +85,45 @@ public class AvlSet<E extends Comparable<E>> extends BstSet<E> implements Sorted
         //TODO
         //throw new UnsupportedOperationException("Studentams reikia realizuoti removeRecursive(E element, AVLNode<E> n)");
 
-//        if (element == null) {
-//            throw new IllegalArgumentException("Element is null in removeRecursive(E element, AVLNode<E> n)");
-//        }
-//
-//        if (n == null) {     // Element not found
-//            return n;
-//        }
-//
-//        int compareResult = c.compare(element, n.element);
-//        if (compareResult < 0) {                                    // In left children
-//            n.setLeft(removeRecursive(element, n.getLeft()));
-//        } else if (compareResult > 0) {                             // In right children
-//            n.setRight(removeRecursive(element, n.getRight()));
-//        } else {                                                    // Current
-//            if (n.getLeft() == null) {                              //Node with only a right child or no children
-//                size--;
-//                return n.getRight();
-//            } else if (n.getRight() == null) {                      //Node with only a left child
-//                size--;
-//                return n.getLeft();
-//            } else {                                                //Node with two children
-//                E minValue = getMin(n.getRight()).element;
-//                n.element = minValue;
-//                n.setRight(removeRecursive(minValue, n.getRight()));
-//            }
-//        }
-
-//        // Update the height of the current node
-//        n.height = 1 + Math.max(height(n.getLeft()), height(n.getRight()));
-//
-//        // Perform AVL balance operations if needed
-//        int balance = getBalance(n);
-//
-//        if (balance > 1 && element.compareTo(n.left.element) < 0) {
-//            return rightRotation(n);
-//        }
-//
-//        if (balance < -1 && element.compareTo(n.right.element) > 0) {
-//            return leftRotation(n);
-//        }
-//
-//        if (balance > 1 && element.compareTo(n.left.element) > 0) {
-//            n.left = leftRotation(n.left);
-//            return rightRotation(n);
-//        }
-//
-//        if (balance < -1 && element.compareTo(n.right.element) < 0) {
-//            n.right = rightRotation(n.right);
-//            return leftRotation(n);
-//        }
-
-//        return n;
-
-        if (n == null)
-        {
+        if (n == null) {
             return n;
         }
-        int cmp = (c == null)
-                ? element.compareTo(n.element)
-                : c.compare(element, n.element);
-        if (cmp < 0)
-        {
+        
+        int compareResult = c.compare(element, n.element);
+        if (compareResult < 0) {                                // In left children
             n.setLeft(removeRecursive(element, n.getLeft()));
-            if (n.getRight() != null && height(n.getRight()) - height(n.getLeft()) >= 2)
-            {
+            if (n.getRight() != null && height(n.getRight()) - height(n.getLeft()) >= 2) {
                 n = (height(n.getRight().getRight()) >= height(n.getRight().getLeft()))
                         ? leftRotation(n)
                         : doubleLeftRotation(n);
             }
         }
-        else if (cmp > 0)
-        {
+        else if (compareResult > 0) {                           // In right children
             n.setRight(removeRecursive(element, n.getRight()));
-            if (n.getLeft() != null
-                    && height(n.getLeft()) - height(n.getRight()) >= 2)
-            {
+            if (n.getLeft() != null && height(n.getLeft()) - height(n.getRight()) >= 2) {
                 n = (height(n.getLeft().getLeft()) >= height(n.getLeft().getRight()))
                         ? rightRotation(n)
                         : doubleRightRotation(n);
             }
         }
-        else if (n.getLeft() != null && n.getRight() != null)
-        {
+        else if (n.getLeft() != null && n.getRight() != null) { // Current
             n.element = ((AVLNode<E>) getMax(n.getLeft())).element;
             n.setLeft(removeRecursive(n.element, n.getLeft()));
-            if (n.getRight() != null && height(n.getRight()) - height(n.getLeft()) >= 2)
-            {
+            if (n.getRight() != null && height(n.getRight()) - height(n.getLeft()) >= 2)  {
                 n = (height(n.getRight().getRight()) >= height(n.getRight().getLeft()))
                         ? leftRotation(n)
                         : doubleLeftRotation(n);
             }
         }
-        else
-        {
+        else {
             size--;
             n = n.getLeft() != null ? n.getLeft() : n.getRight();
         }
-        if (n != null)
-        {
+
+        if (n != null) {
             n.height = Math.max(height(n.getLeft()), height(n.getRight())) + 1;
         }
+
         return n;
     }
 

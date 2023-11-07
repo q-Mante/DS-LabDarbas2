@@ -10,13 +10,14 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @State(Scope.Benchmark)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Warmup(time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(time = 1, timeUnit = TimeUnit.SECONDS, iterations = 10)
 public class Benchmark {
 
     @State(Scope.Benchmark)
@@ -25,6 +26,8 @@ public class Benchmark {
         Car[] cars;
         BstSet<Car> carSetBst;
         AvlSet<Car> carSetAvl;
+
+        int index;
 
         @Setup(Level.Iteration)
         public void generateElements(BenchmarkParams params) {
@@ -37,10 +40,13 @@ public class Benchmark {
             carSetAvl = new AvlSet<>();
             addElements(cars, carSetBst);
             addElements(cars, carSetAvl);
+
+            Random rnd = new Random();
+            index = rnd.nextInt(cars.length);
         }
     }
 
-    @Param({"10000", "20000", "40000", "80000"})
+    @Param({"10000", "20000", "40000", "80000", "160000", "320000", "640000", "1280000"})
     public int elementCount;
 
     Car[] cars;
@@ -56,16 +62,19 @@ public class Benchmark {
 
     @org.openjdk.jmh.annotations.Benchmark
     public void removeBst(FullSet carSet) {
-        for (Car car : carSet.cars) {
-            carSet.carSetBst.remove(car);
-        }
+//        for (Car car : carSet.cars) {
+//            carSet.carSetBst.remove(car);
+//        }
+        carSet.carSetBst.remove(carSet.cars[carSet.index]);
+
     }
 
     @org.openjdk.jmh.annotations.Benchmark
     public void removeAvl(FullSet carSet) {
-        for (Car car : carSet.cars) {
-            carSet.carSetAvl.remove(car);
-        }
+//        for (Car car : carSet.cars) {
+//            carSet.carSetAvl.remove(car);
+//        }
+        carSet.carSetAvl.remove(carSet.cars[carSet.index]);
     }
 
     public static void addElements(Car[] carArray, SortedSet<Car> carSet) {
