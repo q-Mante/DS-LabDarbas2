@@ -1,8 +1,10 @@
 package edu.ktu.ds.lab2.utils;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -512,6 +514,89 @@ public class BstSet<E extends Comparable<E>> implements SortedSet<E>, Cloneable 
 
         return resultSet;
     }
+
+    public List<E> insideElementsOfFullTree() {
+        ArrayList<E> elements = new ArrayList<>();
+
+        if (root != null && (root.right != null && root.left != null)) {
+            outsideRecursive(root.right, true, elements);
+            outsideRecursive(root.left, false, elements);
+        }
+
+        return elements;
+    }
+
+    private void outsideRecursive(BstNode<E> node, boolean ascending, ArrayList<E> elements) {
+        if (node == null)
+            return;
+
+        if (node.right != null && node.left != null) {
+            if (ascending) {
+                insideRecursive(node.left, elements);
+                outsideRecursive(node.right, true, elements);
+            } else {
+                insideRecursive(node.right, elements);
+                outsideRecursive(node.left, false, elements);
+            }
+        }
+    }
+
+    private void insideRecursive(BstNode<E> node, ArrayList<E> elements) {
+        if (node.right != null && node.left != null) {
+            elements.add(node.element);
+            insideRecursive(node.right, elements);
+            insideRecursive(node.left, elements);
+        }
+    }
+
+//    public ArrayList<E> insideElementsOfFullTree() throws Exception{
+//        if (!validateFullTree()) {
+//            throw new Exception("Tree is not full!");
+//        }
+//
+//        ArrayList<E> elements = new ArrayList<>();
+//        Iterator<E> AIter = new IteratorBst(true);
+//        Iterator<E> DIter = new IteratorBst(false);
+//        int index = 0;
+//
+//        while (AIter.hasNext() && DIter.hasNext()) {
+//            E elementA = AIter.next();
+//            E elementD = DIter.next();
+//
+//            if (elementA == elementD)
+//                break;
+//
+//            AIter.next();
+//            DIter.next();
+//
+//            if (index == 0 ){
+//                AIter.next();
+//                DIter.next();
+//            } else {
+//                for (int i = 0; i < index; i++) {
+//                    elements.add(AIter.next());
+//                    AIter.next();
+//                    elements.add(DIter.next());
+//                    DIter.next();
+//                }
+//            }
+//
+//            index++;
+//        }
+//
+//        return elements;
+//    }
+//
+//    private boolean validateFullTree() {
+//        int value = size;
+//        while (value-- != 0) {
+//            if (value % 2 != 0) {
+//                return false;
+//            }
+//            value /= 2;
+//        }
+//        return true;
+//    }
 
     /**
      * Grąžinamas tiesioginis iteratorius.
