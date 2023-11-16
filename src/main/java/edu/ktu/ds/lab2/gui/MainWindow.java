@@ -2,6 +2,7 @@ package edu.ktu.ds.lab2.gui;
 
 import edu.ktu.ds.lab2.demo.Car;
 import edu.ktu.ds.lab2.demo.CarsGenerator;
+import edu.ktu.ds.lab2.utils.BstSet;
 import edu.ktu.ds.lab2.utils.Ks;
 import edu.ktu.ds.lab2.utils.ParsableAvlSet;
 import edu.ktu.ds.lab2.utils.ParsableBstSet;
@@ -272,7 +273,8 @@ public class MainWindow extends JFrame implements ActionListener {
         } else if (source.equals(panButtons.getButtons().get(4))) {
             treeRemoveAllOneByOne();
         } else if (source.equals(panButtons.getButtons().get(5))) {
-            treeRemoveIterationAsc();
+            copyOf();
+            //treeRemoveIterationAsc();
             //treeRemoveIterationDesc();
         }
     }
@@ -367,6 +369,17 @@ public class MainWindow extends JFrame implements ActionListener {
         } else {
             KsGui.oun(taOutput, carsSet, MESSAGES.getString("setIterator"));
         }
+        KsGui.setFormatStartOfLine(false);
+    }
+
+    private void copyOf() {
+        KsGui.setFormatStartOfLine(true);
+        if (carsSet.isEmpty()) {
+            KsGui.ounerr(taOutput, MESSAGES.getString("setIsEmpty"));
+        } else {
+            carsSet = (ParsableBstSet<Car>)((ParsableBstSet<Car>) carsSet).copyOf((BstSet<Car>) carsSet);
+        }
+        KsGui.oun(taOutput, carsSet.toVisualizedString(tfDelimiter.getText()));
         KsGui.setFormatStartOfLine(false);
     }
 

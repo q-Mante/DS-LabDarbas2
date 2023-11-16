@@ -1,5 +1,7 @@
 package edu.ktu.ds.lab2.utils;
 
+import edu.ktu.ds.lab2.demo.Car;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -438,19 +440,37 @@ public class BstSet<E extends Comparable<E>> implements SortedSet<E>, Cloneable 
         }
 
         Set<E> resultSet = new BstSet<>();
-        Iterator<E> iterator = new IteratorBst(true);
+        buildHeadSet(root, element, resultSet);
 
-        while (iterator.hasNext()) {
-            E nextElement = iterator.next();
+//        Iterator<E> iterator = new IteratorBst(true);
+//
+//        while (iterator.hasNext()) {
+//            E nextElement = iterator.next();
+//
+//            if (c.compare(nextElement, element) >= 0) {
+//                break;
+//            }
+//
+//            resultSet.add(nextElement);
+//        }
+//
+        return resultSet;
+    }
 
-            if (c.compare(nextElement, element) >= 0) {
-                break;
-            }
-
-            resultSet.add(nextElement);
+    private void buildHeadSet(BstNode<E> node, E element, Set<E> result) {
+        if (node == null) {
+            return;
         }
 
-        return resultSet;
+        int compareResult = c.compare(node.element, element);
+
+        if (compareResult < 0){
+            result.add(node.element);
+            buildHeadSet(node.left, element, result);
+            buildHeadSet(node.right, element, result);
+        } else {
+            buildHeadSet(node.left, element, result);
+        }
     }
 
     /**
@@ -470,20 +490,41 @@ public class BstSet<E extends Comparable<E>> implements SortedSet<E>, Cloneable 
         }
 
         Set<E> resultSet = new BstSet<>();
-        Iterator<E> iterator = new IteratorBst(true);
+        buildSubSet(root, element1, element2, resultSet);
 
-        while (iterator.hasNext()) {
-            E nextElement = iterator.next();
-
-            if (c.compare(nextElement, element1) >= 0) {
-                if (c.compare(nextElement, element2) >= 0) {
-                    break;
-                }
-                resultSet.add(nextElement);
-            }
-        }
+//        Iterator<E> iterator = new IteratorBst(true);
+//
+//        while (iterator.hasNext()) {
+//            E nextElement = iterator.next();
+//
+//            if (c.compare(nextElement, element1) >= 0) {
+//                if (c.compare(nextElement, element2) >= 0) {
+//                    break;
+//                }
+//                resultSet.add(nextElement);
+//            }
+//        }
 
         return resultSet;
+    }
+
+    private void buildSubSet(BstNode<E> node, E element1, E element2, Set<E> result) {
+        if (node == null) {
+            return;
+        }
+
+        int compareResult1 = c.compare(node.element, element1);
+        int compareResult2 = c.compare(node.element, element2);
+
+        if (compareResult1 >= 0 && compareResult2 < 0){
+            result.add(node.element);
+            buildSubSet(node.left, element1, element2, result);
+            buildSubSet(node.right, element1, element2, result);
+        } else if (compareResult1 < 0) {
+            buildSubSet(node.right, element1, element2, result);
+        } else if (compareResult2 >= 0) {
+            buildSubSet(node.left, element1, element2, result);
+        }
     }
 
     /**
@@ -502,17 +543,81 @@ public class BstSet<E extends Comparable<E>> implements SortedSet<E>, Cloneable 
         }
 
         Set<E> resultSet = new BstSet<>();
-        Iterator<E> iterator = new IteratorBst(true);
+        buildTailSet(root, element, resultSet);
 
-        while (iterator.hasNext()) {
-            E nextElement = iterator.next();
+//        Iterator<E> iterator = new IteratorBst(true);
+//
+//        while (iterator.hasNext()) {
+//            E nextElement = iterator.next();
+//
+//            if (c.compare(nextElement, element) >= 0) {
+//                resultSet.add(nextElement);
+//            }
+//        }
 
-            if (c.compare(nextElement, element) >= 0) {
-                resultSet.add(nextElement);
+        return resultSet;
+    }
+
+    private void buildTailSet(BstNode<E> node, E element, Set<E> result) {
+        if (node == null) {
+            return;
+        }
+
+        int compareResult = c.compare(node.element, element);
+
+        if (compareResult >= 0){
+            result.add(node.element);
+            buildTailSet(node.left, element, result);
+            buildTailSet(node.right, element, result);
+        } else {
+            buildTailSet(node.right, element, result);
+        }
+    }
+
+    public SortedSet<E> copyOf(BstSet<? extends E> set) {
+        if (set == null) {
+            throw new IllegalArgumentException("Set is null in copyOf(BstSet<? extends E> set)");
+        }
+
+        ArrayList<E> list = new ArrayList<>();
+        BstSet<E> copy = new BstSet<>();
+
+        Iterator<E> setIt = (Iterator<E>) set.iterator();
+        Iterator<E> baseIt = new IteratorBst(true);
+        E baseElement = null;
+        boolean prevGreater = false;
+
+        while (setIt.hasNext()) {
+            E element = setIt.next();
+            while (baseIt.hasNext()) {
+                if (!prevGreater) {
+                    baseElement = baseIt.next();
+                }
+
+                if (c.compare(baseElement, element) >= 0) {
+                    if (c.compare(baseElement, element) == 0) {
+                        list.add(element);
+                    } else {
+                        prevGreater = true;
+                    }
+                    break;
+                }
             }
         }
 
-        return resultSet;
+        buildBalancedTree(copy, list, 0, list.size() - 1);
+
+        return copy;
+    }
+
+    private void buildBalancedTree(BstSet<E> copy, ArrayList<E> array, int low, int high) {
+        if (low <= high) {
+            int mid = (low + high) / 2;
+            copy.add(array.get(mid));
+
+            buildBalancedTree(copy, array, low, mid - 1); // Process the left subarray
+            buildBalancedTree(copy, array, mid + 1, high); // Process the right subarray
+        }
     }
 
     public boolean isBalanced(int k) {

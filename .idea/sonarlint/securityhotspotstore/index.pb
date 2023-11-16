@@ -171,3 +171,13 @@ g
 7src/main/java/edu/ktu/ds/lab2/utils/ParsableBstSet.java,a\d\ad78ea0be54ecd641ed40cdf060e01defedf3217
 d
 4src/test/java/edu/ktu/ds/lab2/utils/AvlSetTests.java,a\b\ab7442aed6fefe127c607ef03b3107f1f49643e9
+a
+1src/main/java/edu/ktu/ds/lab2/utils/Parsable.java,4\e\4e78202e35ab3eb1b4c3cc3fa158dbfc8ddf26ed
+g
+7src/main/java/edu/ktu/ds/lab2/utils/ParsableAvlSet.java,0\7\07900d4d459782b7c45329391141aed32a98db1c
+b
+2src/main/java/edu/ktu/ds/lab2/utils/SortedSet.java,d\8\d89b6b281c484aca89d7b5397a0ce78efc075b5d
+]
+-src/main/java/edu/ktu/ds/lab2/demo/Task1.java,d\1\d10706338e651f1aa45fe3012ccc6a36b6711017
+]
+-src/main/java/edu/ktu/ds/lab2/demo/Task2.java,f\8\f8c0081cdc4308ff0aadbd527b51dbfe4e027e21

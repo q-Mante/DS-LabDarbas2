@@ -9,6 +9,7 @@ import java.util.Iterator;
 public class BstSetTests {
 
     private BstSet<Integer> root;
+    private BstSet<Integer> test0;
 
     @Before
     public void setUp() {
@@ -20,7 +21,23 @@ public class BstSetTests {
         root.add(7);
         root.add(12);
         root.add(17);
+
+        test0 = new BstSet<>();
+        test0.add(6);
+        test0.add(5);
+        test0.add(10);
+        test0.add(8);
+        test0.add(7);
+        test0.add(9);
+        test0.add(11);
     }
+
+    @Test
+    public void CopyOfTest() {
+        BstSet<Integer> copy = (BstSet<Integer>) test0.copyOf(test0);
+        Assert.assertEquals(copy.size, test0.size);
+    }
+
 
     @Test
     public void ContainsAllTest() {
@@ -98,8 +115,9 @@ public class BstSetTests {
 
     @Test
     public void HeadSetTest() {
+        root.add(11);
         Set<Integer> headset = root.headSet(12);
-        Assert.assertEquals(4, headset.size());
+        Assert.assertEquals(5, headset.size());
         Assert.assertTrue(headset.contains(2));
         Assert.assertTrue(headset.contains(5));
         Assert.assertTrue(headset.contains(7));

@@ -1,45 +1,48 @@
 
-w	java:S115ß"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÿ‡Ùÿ8ø˜Î²º1
-v	java:S115à"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¨­ôG8ø˜Î²º1
-w	java:S115á"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(€Øêõ8ø˜Î²º1
-|	java:S115â"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(à›ê…ûÿÿÿÿ8ø˜Î²º1
+|
+java:S2293‹"YReplace the type specification in this constructor call with the diamond operator ("<>").(¸À÷Çúÿÿÿÿ8¾°›ü¼1
+w	java:S115á"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÿ‡Ùÿ8ž´ªÚº1
+v	java:S115â"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¨­ôG8ž´ªÚº1
+w	java:S115ã"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(€Øêõ8ž´ªÚº1
+|	java:S115ä"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(à›ê…ûÿÿÿÿ8ž´ªÚº1
 s
-java:S1149 "PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(á®Ìäüÿÿÿÿ8û˜Î²º1
-X	java:S125^"<This block of commented-out lines of code should be removed.(ŒÛ£á8™Î²º1
+java:S1149ž"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(á®Ìäüÿÿÿÿ8¡´ªÚº1
+X	java:S125`"<This block of commented-out lines of code should be removed.(ŒÛ£á8¤´ªÚº1
 O
-java:S1135]"2Complete the task associated to this TODO comment.(…ïœ†8™Î²º1
-X	java:S125…"<This block of commented-out lines of code should be removed.(«¾ÿt8ƒ™Î²º1
+java:S1135_"2Complete the task associated to this TODO comment.(…ïœ†8¥´ªÚº1
+X	java:S125‡"<This block of commented-out lines of code should be removed.(«¾ÿt8¦´ªÚº1
 P
-java:S1135„"2Complete the task associated to this TODO comment.(…ïœ†8„™Î²º1
-X	java:S125ª"<This block of commented-out lines of code should be removed.(Àáq8‡™Î²º1
+java:S1135†"2Complete the task associated to this TODO comment.(…ïœ†8¦´ªÚº1
+X	java:S125¬"<This block of commented-out lines of code should be removed.(Àáq8¶¢›ü¼1
 P
-java:S1135©"2Complete the task associated to this TODO comment.(…ïœ†8‡™Î²º1
-^	java:S125¶"<This block of commented-out lines of code should be removed.(³•úšøÿÿÿÿ8ˆ™Î²º1
+java:S1135«"2Complete the task associated to this TODO comment.(…ïœ†8¶¢›ü¼1
+^	java:S125¸"<This block of commented-out lines of code should be removed.(³•úšøÿÿÿÿ8·¢›ü¼1
 P
-java:S1135µ"2Complete the task associated to this TODO comment.(…ïœ†8ˆ™Î²º1
-Y	java:S125Ç"<This block of commented-out lines of code should be removed.(¯Ü£¦8Š™Î²º1
+java:S1135·"2Complete the task associated to this TODO comment.(…ïœ†8·¢›ü¼1
+Y	java:S125É"<This block of commented-out lines of code should be removed.(¯Ü£¦8º¢›ü¼1
 P
-java:S1135Æ"2Complete the task associated to this TODO comment.(…ïœ†8Š™Î²º1
-Y	java:S125Ö"<This block of commented-out lines of code should be removed.(©Ùëé8‹™Î²º1
+java:S1135È"2Complete the task associated to this TODO comment.(…ïœ†8º¢›ü¼1
+Y	java:S125Ø"<This block of commented-out lines of code should be removed.(©Ùëé8¼¢›ü¼1
 q
-java:S2975’"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¯áÑë8š™Î²º1
-^	java:S125°"<This block of commented-out lines of code should be removed.(“Óé×ÿÿÿÿÿ8™Î²º1
+java:S2975”"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¯áÑë8Ü¢›ü¼1
+^	java:S125²"<This block of commented-out lines of code should be removed.(“Óé×ÿÿÿÿÿ8ß¢›ü¼1
 P
-java:S1135¯"2Complete the task associated to this TODO comment.(…ïœ†8™Î²º1
-^	java:S125Ð"<This block of commented-out lines of code should be removed.(¬‘û„ÿÿÿÿÿ8Ÿ™Î²º1
+java:S1135±"2Complete the task associated to this TODO comment.(…ïœ†8ß¢›ü¼1
+^	java:S125Ò"<This block of commented-out lines of code should be removed.(¬‘û„ÿÿÿÿÿ8â¢›ü¼1
 P
-java:S1135Ï"2Complete the task associated to this TODO comment.(…ïœ†8Ÿ™Î²º1
-^	java:S125ð"<This block of commented-out lines of code should be removed.(‹ßÐûÿÿÿÿ8¡™Î²º1
+java:S1135Ñ"2Complete the task associated to this TODO comment.(…ïœ†8ã¢›ü¼1
+^	java:S125ò"<This block of commented-out lines of code should be removed.(‹ßÐûÿÿÿÿ8å¢›ü¼1
 P
-java:S1135ï"2Complete the task associated to this TODO comment.(…ïœ†8¡™Î²º1
+java:S1135ñ"2Complete the task associated to this TODO comment.(…ïœ†8å¢›ü¼1
+Y	java:S125Ñ"<This block of commented-out lines of code should be removed.(À¡­˜8ï¢›ü¼1
 x
-java:S1450¤"ZRemove the "lastInStack" field and declare it as a local variable in the relevant methods.(´ÉÇù8¥™Î²º1
+java:S1450¢"ZRemove the "lastInStack" field and declare it as a local variable in the relevant methods.(´ÉÇù8ñ¢›ü¼1
 s
-java:S1149 "PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(á®Ìäüÿÿÿÿ8¥™Î²º1
+java:S1149ž"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(á®Ìäüÿÿÿÿ8ò¢›ü¼1
 l
-java:S2272²"NAdd a "NoSuchElementException" for iteration beyond the end of the collection.(ðžƒ³8§™Î²º1
-X	java:S125É"<This block of commented-out lines of code should be removed.(ˆÇž<8©™Î²º1
+java:S2272°"NAdd a "NoSuchElementException" for iteration beyond the end of the collection.(ðžƒ³8ô¢›ü¼1
+X	java:S125Ç"<This block of commented-out lines of code should be removed.(ˆÇž<8ö¢›ü¼1
 P
-java:S1135È"2Complete the task associated to this TODO comment.(…ïœ†8ª™Î²º1
+java:S1135Æ"2Complete the task associated to this TODO comment.(…ïœ†8ö¢›ü¼1
 M
-java:S1068¤"/Remove this unused "lastInStack" private field.(´ÉÇù8¬™Î²º1
+java:S1068¢"/Remove this unused "lastInStack" private field.(´ÉÇù8ù¢›ü¼1
